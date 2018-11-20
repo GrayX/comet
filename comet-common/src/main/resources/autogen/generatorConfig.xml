@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "mybatis-generator-config.dtd">
+
+<generatorConfiguration>
+
+    <context id="comet_dao" targetRuntime="MyBatis3">
+        <property name="mergeable" value="false"/>
+
+        <!--<annotationConfig id="aes" annotationPackage="com.datatrees.commons.annotation.Encrypted" annotationValue="@Encrypted" />-->
+
+        <!--<annotationConfig id="rsa" annotationPackage="com.datatrees.commons.annotation.Encrypted" annotationValue="@Encrypted(value = CryptAlgorithm.RSA)">-->
+        <!--<property name="package" value="com.datatrees.common.security.client.util.CryptAlgorithm"/> &lt;!&ndash; 逗号分割依赖import &ndash;&gt;-->
+        <!--</annotationConfig>-->
+
+        <!--<plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">-->
+        <!--<property name="searchString" value="Example$"/>-->
+        <!--<property name="replaceString" value="Criteria"/>-->
+        <!--</plugin>-->
+
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressMethodComments" value="true"/>
+            <property name="suppressXMLComments" value="true"/>
+            <property name="suppressClassComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://106.14.204.35:3306/grayx_comet"
+                        userId="root"
+                        password="tzxcj2011">
+        </jdbcConnection>
+
+
+        <javaModelGenerator targetPackage="com.grayxcj.comet.common.domain" targetProject="src/main/java/">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mapper/comet" targetProject="src/main/resources/">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.grayxcj.comet.common.mapper"
+                             targetProject="src/main/java/">
+            <property name="enableSubPackages" value="true"/>
+            <property name="rootInterface" value="com.grayxcj.comet.common.mapper.impl"/>
+        </javaClientGenerator>
+
+
+        <table schema="grayx_comet" tableName="comet_machine" domainObjectName="GrayCometMachine">
+            <property name="useActualColumnNames" value="true"/>
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+
+    </context>
+
+</generatorConfiguration>
